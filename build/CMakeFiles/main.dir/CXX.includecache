@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/ERMAC/Desktop/GitMain/main.cpp
+stock10.h
+D:/ERMAC/Desktop/GitMain/stock10.h
+iostream
+-
+
+D:/ERMAC/Desktop/GitMain/stock10.cpp
+stock10.h
+D:/ERMAC/Desktop/GitMain/stock10.h
+iostream
+-
+
+D:/ERMAC/Desktop/GitMain/stock10.h
+string
+-
+
