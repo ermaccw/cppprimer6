@@ -1,3 +1,0 @@
-D:/ERMAC/Desktop/GitMain/build/CMakeFiles/edit_cache.dir
-D:/ERMAC/Desktop/GitMain/build/CMakeFiles/main.dir
-D:/ERMAC/Desktop/GitMain/build/CMakeFiles/rebuild_cache.dir
