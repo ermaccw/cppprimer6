@@ -1,55 +1,29 @@
 // main.cpp
-#include "stack.h"
+#include "bank.h"
 #include <iostream>
-#include <cctype>
 
 int main()
 {
     using std::cin;
     using std::cout;
 
-    Stack st;
-    char ch;
-    unsigned long po;
+    Depositor user1 = Depositor("Steve Jobs", "stevej", 132.68);
+    Depositor user2("Bill Gates", "billg", 378.23);
 
-    cout << "Please enter A to add a purchase order,\n"
-         << "P to process a PO, or Q to quit.\n";
-    while (cin >> ch && toupper(ch) != 'Q')
-    {
-        while (cin.get() != '\n')
-            continue;
-        if (!isalpha(ch))
-        {
-            cout << "\a";
-            continue;
-        }
-        switch (ch)
-        {
-        case 'A':
-        case 'a':
-            cout << "Enter a PO number to add:";
-            cin >> po;
-            if (st.isfull())
-                cout << "stack already full\n";
-            else
-                st.push(po);
-            break;
-        case 'P':
-        case 'p':
-            if (st.isempty())
-                cout << "stack already empty\n";
-            else
-            {
-                st.pop(po);
-                cout << "PO #" << po << " popped\n";
-            }
-            break;
-        }
-        cout << "Please enter A to add a purchase order,\n"
-             << "P to process a PO, or Q to quit.\n";
-    }
-    cout << "Bye\n";
+    user1.show();
+    user2.show();
 
+    std::cout << "\n用户 Steve Jobs 将存入200\n";
+    user1.depositin(200.0);
+    user1.show();
+
+    std::cout << "\n用户Bill Gates 将取出500\n";
+    user2.withdraw(500);
+    user2.show();
+
+    std::cout << "\n用户Bill Gates 将取出100\n";
+    user2.withdraw(100);
+    user2.show();
     system("pause");
     return 0;
 }
