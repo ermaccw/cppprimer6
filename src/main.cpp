@@ -1,30 +1,35 @@
 //main.cpp
-#include "cpp10_2.h"
 #include <iostream>
-
+#include "golf.h"
 int main()
 {
+    using std::cin;
     using std::cout;
     using std::endl;
-    Person one;
-    Person two("Smythecraft");
-    Person three("Dimwiddy", "Sam");
+    Golf ann, andy;
+    //以非交互版本方法设置用户ann的信息
+    ann = Golf("Ann Birdfree", 24);
+    ann.showgolf();
 
-    std::cout << "one:\n";
-    one.Show();
-    one.FormalShow();
+    //以交互版本方法设置用户andy的信息
+    andy.setgolf();
+    andy.showgolf();
+    cout << "reset andy rank 10:\n";
+    andy.sethandicap(10);
     cout << endl;
+    andy.showgolf();
+    //使用交互方法设置一组用户信息
+    int GroupNum; //用户数
+    cout << "Enter group numbers: ";
+    cin >> GroupNum;
+    cin.get();
+    Golf group[GroupNum];
 
-    std::cout << "two:\n";
-    two.Show();
-    two.FormalShow();
-    cout << endl;
-
-    std::cout << "three:\n";
-    three.Show();
-    three.FormalShow();
-    cout << endl;
-
+    for (int i = 0; i < GroupNum; i++)
+        group[i].setgolf();
+    //显示用户组中用户数据
+    for (int i = 0; i < GroupNum; i++)
+        group[i].showgolf();
     system("pause");
     return 0;
 }
