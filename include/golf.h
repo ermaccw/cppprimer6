@@ -13,7 +13,7 @@ public:
     //非交互版本-用户信息输入
     Golf(const char *name, int hc = 0);
     //交互版本-标准输入输入用户信息
-    Golf &setgolf();
+    const Golf &setgolf(Golf &g);
     ~Golf();
     //重置用户等级
     void sethandicap(int hc);

@@ -15,19 +15,21 @@ Golf::Golf(const char *name, int hc)
     handicap = hc;
 }
 //交互版本-标准输入输入用户信息
-Golf &Golf::setgolf()
+const Golf &Golf::setgolf(Golf &g)
 {
     std::cout << "Enter your name: ";
-    std::cin.get(fullname, Len);
-    if (fullname[0] != '\n')
+    std::cin.get(g.fullname, Len);
+    if (g.fullname[0] != '\n')
     {
+        strcpy(this->fullname, g.fullname);
         std::cout << "Enter your handicap: ";
-        std::cin >> handicap;
+        std::cin >> g.handicap;
+        this->handicap = g.handicap;
         std::cin.get();
     }
     return *this;
 }
-Golf::~Golf() {}
+Golf::~Golf() { std::cout << fullname << ",Bye!\n"; }
 //重置用户等级
 void Golf::sethandicap(int hc)
 {
@@ -36,5 +38,5 @@ void Golf::sethandicap(int hc)
 //显示用户内容
 void Golf::showgolf() const
 {
-    std::cout << fullname << " rank: " << handicap << std::endl;
+    std::cout << "fullname: " << fullname << " rank: " << handicap << std::endl;
 }
