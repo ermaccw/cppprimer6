@@ -1,37 +1,19 @@
 //main.cpp
+#include "salesInc.h"
 #include <iostream>
-#include "golf.h"
 int main()
 {
-    using std::cin;
-    using std::cout;
-    using std::endl;
-    Golf ann, andy;
-    //以非交互版本方法设置用户ann的信息
-    ann = Golf("Ann Birdfree", 24);
-    ann.showgolf();
+    double qt[3] = {407.919, 605.599, 402.165};
+    SALES::Sales s1(qt, 3); //非交互式
+    std::cout << "Display s1 contents:\n";
+    s1.showSales();
+    std::cout << std::endl;
 
-    //以交互版本方法设置用户andy的信息
-    andy.setgolf(ann);
-    andy.showgolf();
-    cout << "reset andy rank 10:";
-    andy.sethandicap(10);
-    cout << endl;
-    andy.showgolf();
+    SALES::Sales s2(s2); //交互式
+    std::cout << std::endl;
+    std::cout << "Display s2 contents:\n";
+    s2.showSales();
 
-    //使用交互方法设置一组用户信息
-    int GroupNum; //用户数
-    cout << "Enter group numbers: ";
-    cin >> GroupNum;
-    cin.get();
-    Golf group[GroupNum];
-    Golf temp;
-    for (int i = 0; i < GroupNum; i++)
-        group[i].setgolf(temp);
-    //显示用户组中用户数据
-    for (int i = 0; i < GroupNum; i++)
-        group[i].showgolf();
-
-    system("pause");
+    std::system("pause");
     return 0;
 }
