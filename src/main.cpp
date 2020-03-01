@@ -1,24 +1,27 @@
-//betelgeusean_plorg -- main.cpp
-#include "betelgeusean_plorg.h"
+//main.cpp
+#include "list.h"
 #include <iostream>
 
 int main()
 {
-    Plorg p1;
-    std::cout << "P1 infomation# ";
-    p1.show();
+    using std::cout;
+    using std::endl;
+    Item it1 = {"user1", 18};
+    Item it2 = {"user2", 28};
+    List lst;
+    lst.show();
 
-    Plorg p2("user1", 25);
-    std::cout << "P2 infomation# ";
-    p2.show();
+    std::cout << "Add user1:\n";
+    lst.additem(it1);
+    lst.show();
 
-    p1.setCI(30);
-    std::cout << "P1 set CI# ";
-    p1.show();
+    std::cout << "Add user2:\n";
+    lst.additem(it2);
+    lst.show();
 
-    std::cout << "P3 infomation# ";
-    Plorg p3("hfaohfoahfohafafaffgad", 20);
-    p3.show();
+    std::cout << "所有用户年龄加1：\n";
+    lst.visit(setitem);
+    lst.show();
     system("pause");
     return 0;
 }
