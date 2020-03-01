@@ -19,7 +19,7 @@ int main()
     lst.additem(it2);
     lst.show();
 
-    std::cout << "所有用户年龄加1：\n";
+    std::cout << "所有用户名称前加称谓：\n";
     lst.visit(setitem);
     lst.show();
     system("pause");
