@@ -1,27 +1,55 @@
 //main.cpp
-#include "list.h"
 #include <iostream>
+#include "vect.h"
+#include <cstdlib>
+#include <ctime>
 
 int main()
 {
-    using std::cout;
-    using std::endl;
-    Item it1 = {"user1", 18};
-    Item it2 = {"user2", 28};
-    List lst;
-    lst.show();
+    using namespace std;
+    using VECTOR::Vector;
+    srand(time(0));
+    double direction;
+    Vector step;
+    Vector result(0.0, 0.0);
+    unsigned long steps = 0;
+    double target;
+    double dstep;
 
-    std::cout << "Add user1:\n";
-    lst.additem(it1);
-    lst.show();
+    Vector testv(10.2, 20.3);
+    double magnum = testv;
+    cout << "magnum " << magnum << endl;
 
-    std::cout << "Add user2:\n";
-    lst.additem(it2);
-    lst.show();
+    cout << "输入目标距离 (q 键退出): ";
+    while (cin >> target)
+    {
+        cout << "输入步长: ";
+        if (!(cin >> dstep))
+            break;
+        while (result.magval() < target)
+        {
+            direction = rand() % 360;
+            step.reset(dstep, direction, Vector::POL);
+            result = result + step;
+            steps++;
+        }
+        cout << steps << " 步后到达的位置:\n";
+        cout << result << endl;
+        result.polar_mode();
+        cout << " 或\n"
+             << result << endl;
+        cout << "平均迈步的距离 = " << result.magval() / steps << endl
+             << endl;
+        steps = 0;
+        result.reset(0.0, 0.0);
+        cout << "输入目标距离 (q 键退出): ";
+    }
 
-    std::cout << "所有用户名称前加称谓：\n";
-    lst.visit(setitem);
-    lst.show();
+    cout << "Bye!\n";
+    cin.clear();
+    while (cin.get() != '\n')
+        continue;
+
     system("pause");
     return 0;
 }
