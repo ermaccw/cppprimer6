@@ -1,29 +1,55 @@
-// main.cpp
-#include "bank.h"
+//main.cpp
 #include <iostream>
+#include "vect.h"
+#include <cstdlib>
+#include <ctime>
 
 int main()
 {
-    using std::cin;
-    using std::cout;
+    using namespace std;
+    using VECTOR::Vector;
+    srand(time(0));
+    double direction;
+    Vector step;
+    Vector result(0.0, 0.0);
+    unsigned long steps = 0;
+    double target;
+    double dstep;
 
-    Depositor user1 = Depositor("Steve Jobs", "stevej", 132.68);
-    Depositor user2("Bill Gates", "billg", 378.23);
+    Vector testv(10.2, 20.3);
+    double magnum = testv;
+    cout << "magnum " << magnum << endl;
 
-    user1.show();
-    user2.show();
+    cout << "输入目标距离 (q 键退出): ";
+    while (cin >> target)
+    {
+        cout << "输入步长: ";
+        if (!(cin >> dstep))
+            break;
+        while (result.magval() < target)
+        {
+            direction = rand() % 360;
+            step.reset(dstep, direction, Vector::POL);
+            result = result + step;
+            steps++;
+        }
+        cout << steps << " 步后到达的位置:\n";
+        cout << result << endl;
+        result.polar_mode();
+        cout << " 或\n"
+             << result << endl;
+        cout << "平均迈步的距离 = " << result.magval() / steps << endl
+             << endl;
+        steps = 0;
+        result.reset(0.0, 0.0);
+        cout << "输入目标距离 (q 键退出): ";
+    }
 
-    std::cout << "\n用户 Steve Jobs 将存入200\n";
-    user1.depositin(200.0);
-    user1.show();
+    cout << "Bye!\n";
+    cin.clear();
+    while (cin.get() != '\n')
+        continue;
 
-    std::cout << "\n用户Bill Gates 将取出500\n";
-    user2.withdraw(500);
-    user2.show();
-
-    std::cout << "\n用户Bill Gates 将取出100\n";
-    user2.withdraw(100);
-    user2.show();
     system("pause");
     return 0;
 }
