@@ -8,6 +8,7 @@ int main()
 {
     using namespace std;
     using VECTOR::Vector;
+
     srand(time(0));
     double direction;
     Vector step;
@@ -15,10 +16,6 @@ int main()
     unsigned long steps = 0;
     double target;
     double dstep;
-
-    Vector testv(10.2, 20.3);
-    double magnum = testv;
-    cout << "magnum " << magnum << endl;
 
     cout << "输入目标距离 (q 键退出): ";
     while (cin >> target)
@@ -47,6 +44,7 @@ int main()
 
     cout << "Bye!\n";
     cin.clear();
+
     while (cin.get() != '\n')
         continue;
 
