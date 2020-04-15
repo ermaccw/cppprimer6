@@ -15,15 +15,20 @@ int main()
     unsigned long steps = 0;
     double target;
     double dstep;
+    int testnum = 0;
+    unsigned long stepmax = 0;
+    unsigned long stepmin = 0;
+    int whilenum = 0;
+    unsigned long totalsteps = 0;
 
-    Vector testv(10.2, 20.3);
-    double magnum = testv;
-    cout << "magnum " << magnum << endl;
-
+    cout << "输入测试次数：";
+    cin >> testnum;
+    whilenum = testnum;
     cout << "输入目标距离 (q 键退出): ";
-    while (cin >> target)
+    while (whilenum > 0 && cin >> target)
     {
         cout << "输入步长: ";
+
         if (!(cin >> dstep))
             break;
         while (result.magval() < target)
@@ -34,6 +39,9 @@ int main()
             steps++;
         }
         cout << steps << " 步后到达的位置:\n";
+        stepmax = stepmax > steps ? stepmax : steps;
+        stepmin = whilenum == testnum ? steps : stepmin > steps ? steps : stepmin;
+        totalsteps += steps;
         cout << result << endl;
         result.polar_mode();
         cout << " 或\n"
@@ -43,13 +51,16 @@ int main()
         steps = 0;
         result.reset(0.0, 0.0);
         cout << "输入目标距离 (q 键退出): ";
+        --whilenum;
     }
+    int stepaverage = totalsteps / testnum;
+    cout << testnum << "次测试中，最高" << stepmax
+         << "步，最低" << stepmin
+         << "步，平均" << stepaverage << "步\n";
 
-    cout << "Bye!\n";
     cin.clear();
     while (cin.get() != '\n')
         continue;
-
     system("pause");
     return 0;
 }

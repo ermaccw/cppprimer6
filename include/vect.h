@@ -1,7 +1,10 @@
-//vetc.h
+//vect.h
 #ifndef VECTOR_H_
 #define VECTOR_H_
 #include <iostream>
+#include <cmath>
+using std::atan2;
+using std::sqrt;
 
 namespace VECTOR
 {
@@ -17,13 +20,12 @@ public:
 private:
     double x;
     double y;
-    double mag;
-    double ang;
+    double mag() const { return sqrt(x * x + y * y); }
+    double ang() const
+    {
+        return (x == 0.0 && y == 0.0) ? 0.0 : atan2(y, x);
+    }
     Mode mode;
-    void set_mag();
-    void set_ang();
-    void set_x();
-    void set_y();
 
 public:
     Vector();
@@ -32,8 +34,8 @@ public:
     ~Vector();
     double xval() const { return x; }
     double yval() const { return y; }
-    double magval() const { return mag; }
-    double angval() const { return ang; }
+    double magval() const { return mag(); }
+    double angval() const { return ang(); }
     void polar_mode();
     void rect_mode();
     Vector operator+(const Vector &b) const;
