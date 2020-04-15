@@ -21,10 +21,7 @@ private:
     double x;
     double y;
     double mag() const { return sqrt(x * x + y * y); }
-    double ang() const
-    {
-        return (x == 0.0 && y == 0.0) ? 0.0 : atan2(y, x);
-    }
+    double ang() const { return (x == 0.0 && y == 0.0) ? 0.0 : atan2(y, x); }
     Mode mode;
 
 public:
@@ -47,5 +44,4 @@ public:
     operator double() const;
 };
 } // namespace VECTOR
-
 #endif // !VECTOR_H_
